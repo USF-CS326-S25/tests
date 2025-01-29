@@ -1,0 +1,165 @@
+[project]
+timeout = 300
+subdir = "xv6-riscv"
+
+[[tests]]
+name = "01"
+input = ["python3", "runxv6.py", "wc README"]
+expected = """
+$ wc README
+46 319 2292 README
+"""
+rubric = 5
+
+[[tests]]
+name = "02"
+input = ["python3", "runxv6.py", "wc -l README"]
+expected = """
+$ wc -l README
+46 README
+"""
+rubric = 5
+
+[[tests]]
+name = "03"
+input = ["python3", "runxv6.py", "wc -l README domains.txt"]
+expected = """
+$ wc -l README domains.txt
+46 README
+4 domains.txt
+"""
+rubric = 5
+
+[[tests]]
+name = "04"
+input = ["python3", "runxv6.py", "cat README | wc -l"]
+expected = """
+$ cat README | wc -l
+46
+"""
+rubric = 5
+
+[[tests]]
+name = "05"
+input = ["python3", "runxv6.py", "wc -w -c README"]
+expected = """
+$ wc -w -c README
+319 2292 README
+"""
+rubric = 5
+
+[[tests]]
+name = "05"
+input = ["python3", "runxv6.py", "wc -w -l -c README"]
+expected = """
+$ wc -w -l -c README
+46 319 2292 README
+"""
+rubric = 5
+
+[[tests]]
+name = "06"
+input = ["python3", "runxv6.py", "cat -n domains.txt"]
+expected = """
+$ cat -n domains.txt
+     1  [google.com, 142.251.46.174]
+     2  [usfca.edu, 23.185.0.2]
+     3  [mit.edu, 104.90.21.210]
+     4  [openai.com, 13.107.238.57]
+"""
+rubric = 10
+
+[[tests]]
+name = "07"
+input = ["python3", "runxv6.py", "cat domains.txt | cat -n"]
+expected = """
+$ cat domains.txt | cat -n
+     1  [google.com, 142.251.46.174]
+     2  [usfca.edu, 23.185.0.2]
+     3  [mit.edu, 104.90.21.210]
+     4  [openai.com, 13.107.238.57]
+"""
+rubric = 15
+
+[[tests]]
+name = "08"
+input = ["python3", "runxv6.py", "cat -n README domains.txt"]
+expected = """
+$ cat -n README domains.txt
+     1  xv6 is a re-implementation of Dennis Ritchie's and Ken Thompson's Unix
+     2  Version 6 (v6).  xv6 loosely follows the structure and style of v6,
+     3  but is implemented for a modern RISC-V multiprocessor using ANSI C.
+     4
+     5  ACKNOWLEDGMENTS
+     6
+     7  xv6 is inspired by John Lions's Commentary on UNIX 6th Edition (Peer
+     8  to Peer Communications; ISBN: 1-57398-013-7; 1st edition (June 14,
+     9  2000)).  See also https://pdos.csail.mit.edu/6.1810/, which provides
+    10  pointers to on-line resources for v6.
+    11
+    12  The following people have made contributions: Russ Cox (context switching,
+    13  locking), Cliff Frey (MP), Xiao Yu (MP), Nickolai Zeldovich, and Austin
+    14  Clements.
+    15
+    16  We are also grateful for the bug reports and patches contributed by
+    17  Takahiro Aoyagi, Marcelo Arroyo, Silas Boyd-Wickizer, Anton Burtsev,
+    18  carlclone, Ian Chen, Dan Cross, Cody Cutler, Mike CAT, Tej Chajed,
+    19  Asami Doi,Wenyang Duan, eyalz800, Nelson Elhage, Saar Ettinger, Alice
+    20  Ferrazzi, Nathaniel Filardo, flespark, Peter Froehlich, Yakir Goaron,
+    21  Shivam Handa, Matt Harvey, Bryan Henry, jaichenhengjie, Jim Huang,
+    22  Matúš Jókay, John Jolly, Alexander Kapshuk, Anders Kaseorg, kehao95,
+    23  Wolfgang Keller, Jungwoo Kim, Jonathan Kimmitt, Eddie Kohler, Vadim
+    24  Kolontsov, Austin Liew, l0stman, Pavan Maddamsetti, Imbar Marinescu,
+    25  Yandong Mao, Matan Shabtay, Hitoshi Mitake, Carmi Merimovich, Mark
+    26  Morrissey, mtasm, Joel Nider, Hayato Ohhashi, OptimisticSide,
+    27  phosphagos, Harry Porter, Greg Price, RayAndrew, Jude Rich, segfault,
+    28  Ayan Shafqat, Eldar Sehayek, Yongming Shen, Fumiya Shigemitsu, snoire,
+    29  Taojie, Cam Tenny, tyfkda, Warren Toomey, Stephen Tu, Alissa Tung,
+    30  Rafael Ubal, Amane Uehara, Pablo Ventura, Xi Wang, WaheedHafez,
+    31  Keiichi Watanabe, Lucas Wolf, Nicolas Wolovick, wxdao, Grant Wu, x653,
+    32  Jindong Zhang, Icenowy Zheng, ZhUyU1997, and Zou Chang Wei.
+    33
+    34  ERROR REPORTS
+    35
+    36  Please send errors and suggestions to Frans Kaashoek and Robert Morris
+    37  (kaashoek,rtm@mit.edu).  The main purpose of xv6 is as a teaching
+    38  operating system for MIT's 6.1810, so we are more interested in
+    39  simplifications and clarifications than new features.
+    40
+    41  BUILDING AND RUNNING XV6
+    42
+    43  You will need a RISC-V "newlib" tool chain from
+    44  https://github.com/riscv/riscv-gnu-toolchain, and qemu compiled for
+    45  riscv64-softmmu.  Once they are installed, and in your shell
+    46  search path, you can run "make qemu".
+    47  [google.com, 142.251.46.174]
+    48  [usfca.edu, 23.185.0.2]
+    49  [mit.edu, 104.90.21.210]
+    50  [openai.com, 13.107.238.57]
+"""
+rubric = 15
+
+
+[[tests]]
+name = "09"
+input = ["python3", "runxv6.py", "sort domains.txt"]
+expected = """
+$ sort domains.txt
+[google.com, 142.251.46.174]
+[mit.edu, 104.90.21.210]
+[openai.com, 13.107.238.57]
+[usfca.edu, 23.185.0.2]
+"""
+rubric = 15
+
+[[tests]]
+name = "10"
+input = ["python3", "runxv6.py", "cat domains.txt | sort"]
+expected = """
+$ cat domains.txt | sort
+[google.com, 142.251.46.174]
+[mit.edu, 104.90.21.210]
+[openai.com, 13.107.238.57]
+[usfca.edu, 23.185.0.2]
+"""
+rubric = 15

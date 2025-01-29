@@ -1,0 +1,21 @@
+[project]
+timeout = 300
+subdir = "xv6-riscv"
+
+[[tests]]
+name = "01"
+input = ["python3", "runxv6.py", "hello"]
+expected = """
+$ hello
+Hello, xv6!
+"""
+rubric = 50
+
+[[tests]]
+name = "02"
+input = ["python3", "runxv6.py", "sumargs 1 2 3 4 5"]
+expected = """
+$ sumargs 1 2 3 4 5
+15
+"""
+rubric = 50
