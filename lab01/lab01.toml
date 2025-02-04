@@ -2,6 +2,7 @@
 timeout = 300
 subdir = "xv6-riscv"
 
+
 [[tests]]
 name = "01"
 input = ["python3", "runxv6.py", "hello"]
