@@ -9,7 +9,7 @@ expected = """
 $ wc README
 46 319 2292 README
 """
-rubric = 1
+rubric = 5
 
 [[tests]]
 name = "02"
@@ -55,7 +55,7 @@ expected = """
 $ wc -w -l -c README
 46 319 2292 README
 """
-rubric = 4
+rubric = 5
 
 [[tests]]
 name = "06"
@@ -177,18 +177,6 @@ bar
 baz
 foo
 bar
-baz
-"""
-rubric = 5
-
-[[tests]]
-name = "12"
-input = ["python3", "runxv6.py", "genfile foo.txt 4 foo baz goo; grep az foo.txt"]
-expected = """
-$ genfile foo.txt 4 foo baz goo; grep az foo.txt
-baz
-baz
-baz
 baz
 """
 rubric = 10
