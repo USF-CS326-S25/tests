@@ -9,7 +9,7 @@ expected = """
 $ wc README
 46 319 2292 README
 """
-rubric = 5
+rubric = 1
 
 [[tests]]
 name = "02"
@@ -55,7 +55,7 @@ expected = """
 $ wc -w -l -c README
 46 319 2292 README
 """
-rubric = 5
+rubric = 4
 
 [[tests]]
 name = "06"
@@ -79,7 +79,7 @@ $ cat domains.txt | cat -n
      3  [mit.edu, 104.90.21.210]
      4  [openai.com, 13.107.238.57]
 """
-rubric = 15
+rubric = 10
 
 [[tests]]
 name = "08"
@@ -137,7 +137,7 @@ $ cat -n README domains.txt
     49  [mit.edu, 104.90.21.210]
     50  [openai.com, 13.107.238.57]
 """
-rubric = 15
+rubric = 10
 
 
 [[tests]]
@@ -150,7 +150,7 @@ $ sort domains.txt
 [openai.com, 13.107.238.57]
 [usfca.edu, 23.185.0.2]
 """
-rubric = 15
+rubric = 10
 
 [[tests]]
 name = "10"
@@ -162,4 +162,51 @@ $ cat domains.txt | sort
 [openai.com, 13.107.238.57]
 [usfca.edu, 23.185.0.2]
 """
-rubric = 15
+rubric = 10
+
+[[tests]]
+name = "11"
+input = ["python3", "runxv6.py", "genfile foo.txt 3 foo bar baz; cat foo.txt"]
+expected = """
+$ genfile foo.txt 3 foo bar baz; cat foo.txt
+foo
+bar
+baz
+foo
+bar
+baz
+foo
+bar
+baz
+"""
+rubric = 5
+
+[[tests]]
+name = "12"
+input = ["python3", "runxv6.py", "genfile foo.txt 4 foo baz goo; grep az foo.txt"]
+expected = """
+$ genfile foo.txt 4 foo baz goo; grep az foo.txt
+baz
+baz
+baz
+baz
+"""
+rubric = 10
+
+[[tests]]
+name = "13"
+input = ["python3", "runxv6.py", "genfile foo.txt 2 foo baz goo; genfile bar.txt 2 foo stu goo; diff foo.txt bar.txt"]
+expected = """
+$ genfile foo.txt 2 foo baz goo; genfile bar.txt 2 foo stu goo; diff foo.txt bar.txt
+line 2
+< baz
+---
+> stu
+line 5
+< baz
+---
+> stu
+"""
+rubric = 10
+
+
