@@ -1,0 +1,157 @@
+[project]
+timeout = 30
+subdir = "xv6-riscv"
+
+[[tests]]
+name = "01"
+input = ["python3", "runxv6.py", "sort README"]
+expected = """
+$ sort README
+
+
+
+
+
+
+
+
+(kaashoek,rtm@mit.edu).  The main purpose of xv6 is as a teaching
+2000)).  See also https://pdos.csail.mit.edu/6.1810/, which provides
+ACKNOWLEDGMENTS
+Asami Doi,Wenyang Duan, eyalz800, Nelson Elhage, Saar Ettinger, Alice
+Ayan Shafqat, Eldar Sehayek, Yongming Shen, Fumiya Shigemitsu, snoire,
+BUILDING AND RUNNING XV6
+Clements.
+ERROR REPORTS
+Ferrazzi, Nathaniel Filardo, flespark, Peter Froehlich, Yakir Goaron,
+Jindong Zhang, Icenowy Zheng, ZhUyU1997, and Zou Chang Wei.
+Keiichi Watanabe, Lucas Wolf, Nicolas Wolovick, wxdao, Grant Wu, x653,
+Kolontsov, Austin Liew, l0stman, Pavan Maddamsetti, Imbar Marinescu,
+Matúš Jókay, John Jolly, Alexander Kapshuk, Anders Kaseorg, kehao95,
+Morrissey, mtasm, Joel Nider, Hayato Ohhashi, OptimisticSide,
+Please send errors and suggestions to Frans Kaashoek and Robert Morris
+Rafael Ubal, Amane Uehara, Pablo Ventura, Xi Wang, WaheedHafez,
+Shivam Handa, Matt Harvey, Bryan Henry, jaichenhengjie, Jim Huang,
+Takahiro Aoyagi, Marcelo Arroyo, Silas Boyd-Wickizer, Anton Burtsev,
+Taojie, Cam Tenny, tyfkda, Warren Toomey, Stephen Tu, Alissa Tung,
+The following people have made contributions: Russ Cox (context switching,
+Version 6 (v6).  xv6 loosely follows the structure and style of v6,
+We are also grateful for the bug reports and patches contributed by
+Wolfgang Keller, Jungwoo Kim, Jonathan Kimmitt, Eddie Kohler, Vadim
+Yandong Mao, Matan Shabtay, Hitoshi Mitake, Carmi Merimovich, Mark
+You will need a RISC-V "newlib" tool chain from
+but is implemented for a modern RISC-V multiprocessor using ANSI C.
+carlclone, Ian Chen, Dan Cross, Cody Cutler, Mike CAT, Tej Chajed,
+https://github.com/riscv/riscv-gnu-toolchain, and qemu compiled for
+locking), Cliff Frey (MP), Xiao Yu (MP), Nickolai Zeldovich, and Austin
+operating system for MIT's 6.1810, so we are more interested in
+phosphagos, Harry Porter, Greg Price, RayAndrew, Jude Rich, segfault,
+pointers to on-line resources for v6.
+riscv64-softmmu.  Once they are installed, and in your shell
+search path, you can run "make qemu".
+simplifications and clarifications than new features.
+to Peer Communications; ISBN: 1-57398-013-7; 1st edition (June 14,
+xv6 is a re-implementation of Dennis Ritchie's and Ken Thompson's Unix
+xv6 is inspired by John Lions's Commentary on UNIX 6th Edition (Peer
+"""
+rubric = 20
+
+[[tests]]
+name = "02"
+input = ["python3", "runxv6.py", "cat README | sort"]
+expected = """
+$ cat README | sort
+
+
+
+
+
+
+
+
+(kaashoek,rtm@mit.edu).  The main purpose of xv6 is as a teaching
+2000)).  See also https://pdos.csail.mit.edu/6.1810/, which provides
+ACKNOWLEDGMENTS
+Asami Doi,Wenyang Duan, eyalz800, Nelson Elhage, Saar Ettinger, Alice
+Ayan Shafqat, Eldar Sehayek, Yongming Shen, Fumiya Shigemitsu, snoire,
+BUILDING AND RUNNING XV6
+Clements.
+ERROR REPORTS
+Ferrazzi, Nathaniel Filardo, flespark, Peter Froehlich, Yakir Goaron,
+Jindong Zhang, Icenowy Zheng, ZhUyU1997, and Zou Chang Wei.
+Keiichi Watanabe, Lucas Wolf, Nicolas Wolovick, wxdao, Grant Wu, x653,
+Kolontsov, Austin Liew, l0stman, Pavan Maddamsetti, Imbar Marinescu,
+Matúš Jókay, John Jolly, Alexander Kapshuk, Anders Kaseorg, kehao95,
+Morrissey, mtasm, Joel Nider, Hayato Ohhashi, OptimisticSide,
+Please send errors and suggestions to Frans Kaashoek and Robert Morris
+Rafael Ubal, Amane Uehara, Pablo Ventura, Xi Wang, WaheedHafez,
+Shivam Handa, Matt Harvey, Bryan Henry, jaichenhengjie, Jim Huang,
+Takahiro Aoyagi, Marcelo Arroyo, Silas Boyd-Wickizer, Anton Burtsev,
+Taojie, Cam Tenny, tyfkda, Warren Toomey, Stephen Tu, Alissa Tung,
+The following people have made contributions: Russ Cox (context switching,
+Version 6 (v6).  xv6 loosely follows the structure and style of v6,
+We are also grateful for the bug reports and patches contributed by
+Wolfgang Keller, Jungwoo Kim, Jonathan Kimmitt, Eddie Kohler, Vadim
+Yandong Mao, Matan Shabtay, Hitoshi Mitake, Carmi Merimovich, Mark
+You will need a RISC-V "newlib" tool chain from
+but is implemented for a modern RISC-V multiprocessor using ANSI C.
+carlclone, Ian Chen, Dan Cross, Cody Cutler, Mike CAT, Tej Chajed,
+https://github.com/riscv/riscv-gnu-toolchain, and qemu compiled for
+locking), Cliff Frey (MP), Xiao Yu (MP), Nickolai Zeldovich, and Austin
+operating system for MIT's 6.1810, so we are more interested in
+phosphagos, Harry Porter, Greg Price, RayAndrew, Jude Rich, segfault,
+pointers to on-line resources for v6.
+riscv64-softmmu.  Once they are installed, and in your shell
+search path, you can run "make qemu".
+simplifications and clarifications than new features.
+to Peer Communications; ISBN: 1-57398-013-7; 1st edition (June 14,
+xv6 is a re-implementation of Dennis Ritchie's and Ken Thompson's Unix
+xv6 is inspired by John Lions's Commentary on UNIX 6th Edition (Peer
+"""
+rubric = 20
+
+[[tests]]
+name = "03"
+input = ["python3", "runxv6.py", "tail README"]
+expected = """
+$ tail README
+(kaashoek,rtm@mit.edu).  The main purpose of xv6 is as a teaching
+operating system for MIT's 6.1810, so we are more interested in
+simplifications and clarifications than new features.
+
+BUILDING AND RUNNING XV6
+
+You will need a RISC-V "newlib" tool chain from
+https://github.com/riscv/riscv-gnu-toolchain, and qemu compiled for
+riscv64-softmmu.  Once they are installed, and in your shell
+search path, you can run "make qemu".
+"""
+rubric = 20
+
+[[tests]]
+name = "04"
+input = ["python3", "runxv6.py", "cat README | tail -n 3"]
+expected = """
+$ cat README | tail -n 3
+https://github.com/riscv/riscv-gnu-toolchain, and qemu compiled for
+riscv64-softmmu.  Once they are installed, and in your shell
+search path, you can run "make qemu".
+"""
+rubric = 20
+
+[[tests]]
+name = "05"
+input = ["python3", "runxv6.py", "memtest m 0 3000 A0 p s c 4096"]
+expected = """
+$ memtest m 0 3000 A0 p s c 4096
+[USED] name = A0 boff = 0 bhsz = 32 bsz = 3032 doff = 32 dsz = 3000
+[FREE] name = NONE boff = 3032 bhsz = 32 bsz = 1064 doff = 3064 dsz = 1032
+malloc_summary():
+used  : 3000
+free  : 1032
+over  : 64
+u+f+o : 4096
+total : 4096
+mem_check() passed with heap <= 4096
+"""
+rubric = 20
