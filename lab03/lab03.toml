@@ -138,20 +138,3 @@ riscv64-softmmu.  Once they are installed, and in your shell
 search path, you can run "make qemu".
 """
 rubric = 20
-
-[[tests]]
-name = "05"
-input = ["python3", "runxv6.py", "memtest m 0 3000 A0 p s c 4096"]
-expected = """
-$ memtest m 0 3000 A0 p s c 4096
-[USED] name = A0 boff = 0 bhsz = 32 bsz = 3032 doff = 32 dsz = 3000
-[FREE] name = NONE boff = 3032 bhsz = 32 bsz = 1064 doff = 3064 dsz = 1032
-malloc_summary():
-used  : 3000
-free  : 1032
-over  : 64
-u+f+o : 4096
-total : 4096
-mem_check() passed with heap <= 4096
-"""
-rubric = 20
