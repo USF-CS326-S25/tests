@@ -57,22 +57,6 @@ rubric = 10
 
 [[tests]]
 name = "04"
-input = ["python3", "runxv6.py", "memtest m 0 1000 A0 f 0 p s c 4096"]
-expected = """
-$ memtest m 0 1000 A0 f 0 p s c 4096
-[FREE] name = NONE boff = 0 bhsz = 32 bsz = 4096 doff = 32 dsz = 4064
-malloc_summary():
-used  : 0
-free  : 4064
-over  : 32
-u+f+o : 4096
-total : 4096
-mem_check() passed with heap <= 4096
-"""
-rubric = 10
-
-[[tests]]
-name = "05"
 input = ["python3", "runxv6.py", "memtest m 0 500 A0 m 1 500 A1 m 2 500 A2 m 3 500 A3 f 2 p s c 4096"]
 expected = """
 $ memtest m 0 500 A0 m 1 500 A1 m 2 500 A2 m 3 500 A3 f 2 p s c 4096
@@ -85,6 +69,22 @@ malloc_summary():
 used  : 1500
 free  : 2436
 over  : 160
+u+f+o : 4096
+total : 4096
+mem_check() passed with heap <= 4096
+"""
+rubric = 10
+
+[[tests]]
+name = "05"
+input = ["python3", "runxv6.py", "memtest m 0 1000 A0 f 0 p s c 4096"]
+expected = """
+$ memtest m 0 1000 A0 f 0 p s c 4096
+[FREE] name = NONE boff = 0 bhsz = 32 bsz = 4096 doff = 32 dsz = 4064
+malloc_summary():
+used  : 0
+free  : 4064
+over  : 32
 u+f+o : 4096
 total : 4096
 mem_check() passed with heap <= 4096
