@@ -1,0 +1,48 @@
+[project]
+timeout = 300
+subdir = "xv6-riscv"
+
+[[tests]]
+name = "01"
+input = ["python3", "runxv6.py", "rdir README wc wc.out; cat wc.out"]
+expected = """
+$ rdir README wc wc.out; cat wc.out
+46 319 2292
+"""
+rubric = 15
+
+[[tests]]
+name = "02"
+input = ["python3", "runxv6.py", "echo Foo > foo.txt; rdir foo.txt cat foo.out; cat foo.out"]
+expected = """
+$ echo Foo > foo.txt; rdir foo.txt cat foo.out; cat foo.out
+Foo
+"""
+rubric = 15
+
+[[tests]]
+name = "03"
+input = ["python3", "runxv6.py", "rpipe2 hello cat"]
+expected = """
+$ rpipe2 hello cat
+Hello, World!
+"""
+rubric = 20
+
+[[tests]]
+name = "04"
+input = ["python3", "runxv6.py", "rpipe2 hello wc"]
+expected = """
+$ rpipe2 hello wc
+1 2 14
+"""
+rubric = 20
+
+[[tests]]
+name = "05"
+input = ["python3", "runxv6.py", "rpipe3 hello wc cat"]
+expected = """
+$ rpipe3 hello wc cat
+1 2 14
+"""
+rubric = 30
