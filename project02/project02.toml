@@ -1,0 +1,436 @@
+[project]
+timeout = 30
+subdir = "xv6-riscv"
+
+[[tests]]
+name = "01"
+input = ["python3", "runxv6.py", "echo hi", "history"]
+expected = """
+$ echo hi
+hi
+$ history
+    1  echo hi
+    2  history
+"""
+rubric = 5
+
+[[tests]]
+name = "02"
+input = ["python3", "runxv6.py", "echo hi", "echo bye", "history"]
+expected = """
+$ echo hi
+hi
+$ echo bye
+bye
+$ history
+    1  echo hi
+    2  echo bye
+    3  history
+"""
+rubric = 5
+
+[[tests]]
+name = "03"
+input = ["python3", "runxv6.py", "echo hi", "echo bye", "history", "echo foo", "history"]
+expected = """
+$ echo hi
+hi
+$ echo bye
+bye
+$ history
+    1  echo hi
+    2  echo bye
+    3  history
+$ echo foo
+foo
+$ history
+    1  echo hi
+    2  echo bye
+    3  history
+    4  echo foo
+    5  history
+"""
+rubric = 5
+
+[[tests]]
+name = "04"
+input = ["python3", "runxv6.py", "echo hi", "echo bye", "history", "echo foo", "history", "!2", "history"]
+expected = """
+$ echo hi
+hi
+$ echo bye
+bye
+$ history
+    1  echo hi
+    2  echo bye
+    3  history
+$ echo foo
+foo
+$ history
+    1  echo hi
+    2  echo bye
+    3  history
+    4  echo foo
+    5  history
+$ !2
+echo bye
+bye
+$ history
+    1  echo hi
+    2  echo bye
+    3  history
+    4  echo foo
+    5  history
+    6  echo bye
+    7  history
+"""
+rubric = 10
+
+[[tests]]
+name = "05"
+input = ["python3", "runxv6.py", "echo hi", "echo bye", "history", "echo foo", "history", "!2", "history", "!5"]
+expected = """
+$ echo hi
+hi
+$ echo bye
+bye
+$ history
+    1  echo hi
+    2  echo bye
+    3  history
+$ echo foo
+foo
+$ history
+    1  echo hi
+    2  echo bye
+    3  history
+    4  echo foo
+    5  history
+$ !2
+echo bye
+bye
+$ history
+    1  echo hi
+    2  echo bye
+    3  history
+    4  echo foo
+    5  history
+    6  echo bye
+    7  history
+$ !5
+history
+    1  echo hi
+    2  echo bye
+    3  history
+    4  echo foo
+    5  history
+    6  echo bye
+    7  history
+    8  history
+"""
+rubric = 10
+
+[[tests]]
+name = "06"
+input = ["python3", "runxv6.py", "echo hi", "echo bye", "history", "echo foo", "history", "!2", "history", "!5", "", "", "history"]
+expected = """
+$ echo hi
+hi
+$ echo bye
+bye
+$ history
+    1  echo hi
+    2  echo bye
+    3  history
+$ echo foo
+foo
+$ history
+    1  echo hi
+    2  echo bye
+    3  history
+    4  echo foo
+    5  history
+$ !2
+echo bye
+bye
+$ history
+    1  echo hi
+    2  echo bye
+    3  history
+    4  echo foo
+    5  history
+    6  echo bye
+    7  history
+$ !5
+history
+    1  echo hi
+    2  echo bye
+    3  history
+    4  echo foo
+    5  history
+    6  echo bye
+    7  history
+    8  history
+$
+$
+$ history
+    1  echo hi
+    2  echo bye
+    3  history
+    4  echo foo
+    5  history
+    6  echo bye
+    7  history
+    8  history
+    9  history
+"""
+rubric = 10
+
+[[tests]]
+name = "07"
+input = ["python3", "runxv6.py", "echo hi", "echo bye", "history", "echo foo", "history", "!2", "history", "!5", "", "", "history", "!ec", "echo foo", "wc README", "grep ACK README", "history"]
+expected = """
+$ echo hi
+hi
+$ echo bye
+bye
+$ history
+    1  echo hi
+    2  echo bye
+    3  history
+$ echo foo
+foo
+$ history
+    1  echo hi
+    2  echo bye
+    3  history
+    4  echo foo
+    5  history
+$ !2
+echo bye
+bye
+$ history
+    1  echo hi
+    2  echo bye
+    3  history
+    4  echo foo
+    5  history
+    6  echo bye
+    7  history
+$ !5
+history
+    1  echo hi
+    2  echo bye
+    3  history
+    4  echo foo
+    5  history
+    6  echo bye
+    7  history
+    8  history
+$
+$
+$ history
+    1  echo hi
+    2  echo bye
+    3  history
+    4  echo foo
+    5  history
+    6  echo bye
+    7  history
+    8  history
+    9  history
+$ !ec
+echo bye
+bye
+$ echo foo
+foo
+$ wc README
+46 319 2292 readme
+$ grep ACK README
+ACKNOWLEDGMENTS
+$ history
+    5  history
+    6  echo bye
+    7  history
+    8  history
+    9  history
+   10  echo bye
+   11  echo foo
+   12  wc README
+   13  grep ACK README
+   14  history
+"""
+rubric = 10
+
+[[tests]]
+name = "08"
+input = ["python3", "runxv6.py", "echo hi", "echo bye", "history", "echo foo", "history", "!2", "history", "!5", "", "", "history", "!ec", "echo foo", "wc README", "grep ACK README", "history", "!4", "!baz"]
+expected = """
+$ echo hi
+hi
+$ echo bye
+bye
+$ history
+    1  echo hi
+    2  echo bye
+    3  history
+$ echo foo
+foo
+$ history
+    1  echo hi
+    2  echo bye
+    3  history
+    4  echo foo
+    5  history
+$ !2
+echo bye
+bye
+$ history
+    1  echo hi
+    2  echo bye
+    3  history
+    4  echo foo
+    5  history
+    6  echo bye
+    7  history
+$ !5
+history
+    1  echo hi
+    2  echo bye
+    3  history
+    4  echo foo
+    5  history
+    6  echo bye
+    7  history
+    8  history
+$
+$
+$ history
+    1  echo hi
+    2  echo bye
+    3  history
+    4  echo foo
+    5  history
+    6  echo bye
+    7  history
+    8  history
+    9  history
+$ !ec
+echo bye
+bye
+$ echo foo
+foo
+$ wc README
+46 319 2292 readme
+$ grep ACK README
+ACKNOWLEDGMENTS
+$ history
+    5  history
+    6  echo bye
+    7  history
+    8  history
+    9  history
+   10  echo bye
+   11  echo foo
+   12  wc README
+   13  grep ACK README
+   14  history
+$ !4
+-sh: !4: event not found
+$ !baz
+-sh: !baz: event not found
+"""
+rubric = 10
+
+[[tests]]
+name = "09"
+input = ["python3", "runxv6.py", "echo hi", "echo bye", "history", "echo foo", "history", "!2", "history", "!5", "", "", "history", "!ec", "echo foo", "wc README", "grep ACK README", "history", "!4", "!baz", "foobar", "history"]
+expected = """
+$ echo hi
+hi
+$ echo bye
+bye
+$ history
+    1  echo hi
+    2  echo bye
+    3  history
+$ echo foo
+foo
+$ history
+    1  echo hi
+    2  echo bye
+    3  history
+    4  echo foo
+    5  history
+$ !2
+echo bye
+bye
+$ history
+    1  echo hi
+    2  echo bye
+    3  history
+    4  echo foo
+    5  history
+    6  echo bye
+    7  history
+$ !5
+history
+    1  echo hi
+    2  echo bye
+    3  history
+    4  echo foo
+    5  history
+    6  echo bye
+    7  history
+    8  history
+$
+$
+$ history
+    1  echo hi
+    2  echo bye
+    3  history
+    4  echo foo
+    5  history
+    6  echo bye
+    7  history
+    8  history
+    9  history
+$ !ec
+echo bye
+bye
+$ echo foo
+foo
+$ wc README
+46 319 2292 readme
+$ grep ACK README
+ACKNOWLEDGMENTS
+$ history
+    5  history
+    6  echo bye
+    7  history
+    8  history
+    9  history
+   10  echo bye
+   11  echo foo
+   12  wc README
+   13  grep ACK README
+   14  history
+$ !4
+-sh: !4: event not found
+$ !baz
+-sh: !baz: event not found
+$ foobar
+exec foobar failed
+$ history
+    7  history
+    8  history
+    9  history
+   10  echo bye
+   11  echo foo
+   12  wc README
+   13  grep ACK README
+   14  history
+   15  foobar
+   16  history
+"""
+rubric = 5
