@@ -84,7 +84,7 @@ $ history
     6  echo bye
     7  history
 """
-rubric = 10
+rubric = 5
 
 [[tests]]
 name = "05"
@@ -128,7 +128,7 @@ history
     7  history
     8  history
 """
-rubric = 10
+rubric = 5
 
 [[tests]]
 name = "06"
@@ -184,7 +184,7 @@ $ history
     8  history
     9  history
 """
-rubric = 10
+rubric = 5
 
 [[tests]]
 name = "07"
@@ -260,7 +260,7 @@ $ history
    13  grep ACK README
    14  history
 """
-rubric = 10
+rubric = 5
 
 [[tests]]
 name = "08"
@@ -340,7 +340,7 @@ $ !4
 $ !baz
 -sh: !baz: event not found
 """
-rubric = 10
+rubric = 5
 
 [[tests]]
 name = "09"
@@ -433,4 +433,13 @@ $ history
    15  foobar
    16  history
 """
-rubric = 5
+rubric = 10
+
+[[tests]]
+name = "10"
+input = ["python3", "runxv6.py", "echo foobar | pipect"]
+expected = """
+$ echo foobar | pipect
+7
+"""
+rubric = 10

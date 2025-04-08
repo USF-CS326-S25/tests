@@ -74,3 +74,109 @@ total : 4096
 mem_check() passed with heap <= 4096
 """
 rubric = 10
+
+[[tests]]
+name = "05"
+input = ["python3", "runxv6.py", "memtest m 0 1000 A0 f 0 p s c 4096"]
+expected = """
+$ memtest m 0 1000 A0 f 0 p s c 4096
+[FREE] name = NONE boff = 0 bhsz = 32 bsz = 4096 doff = 32 dsz = 4064
+malloc_summary():
+used  : 0
+free  : 4064
+over  : 32
+u+f+o : 4096
+total : 4096
+mem_check() passed with heap <= 4096
+"""
+rubric = 10
+
+[[tests]]
+name = "06"
+input = ["python3", "runxv6.py", "memtest m 0 500 A0 m 1 500 A1 m 2 500 A2 m 3 500 A3 f 0 f 2 f 1 p s c 4096"]
+expected = """
+$ memtest m 0 500 A0 m 1 500 A1 m 2 500 A2 m 3 500 A3 f 0 f 2 f 1 p s c 4096
+[FREE] name = NONE boff = 0 bhsz = 32 bsz = 1596 doff = 32 dsz = 1564
+[USED] name = A3 boff = 1596 bhsz = 32 bsz = 532 doff = 1628 dsz = 500
+[FREE] name = NONE boff = 2128 bhsz = 32 bsz = 1968 doff = 2160 dsz = 1936
+malloc_summary():
+used  : 500
+free  : 3500
+over  : 96
+u+f+o : 4096
+total : 4096
+mem_check() passed with heap <= 4096
+"""
+rubric = 10
+
+[[tests]]
+name = "07"
+input = ["python3", "runxv6.py", "memtest m 0 1000 A0 m 1 1000 A1 m 2 1000 A2 f 0 f 1 f 2 m 0 1000 A3 m 1 1000 A4 m 2 1000 A5 f 0 f 1 f 2 m 0 1000 A6 m 1 1000 A7 m 2 1000 A8 p s c 4096"]
+expected = """
+$ memtest m 0 1000 A0 m 1 1000 A1 m 2 1000 A2 f 0 f 1 f 2 m 0 1000 A3 m 1 1000 A4 m 2 1000 A5 f 0 f 1 f 2 m 0 1000 A6 m 1 1000 A7 m 2 1000 A8 p s c 4096
+[USED] name = A6 boff = 0 bhsz = 32 bsz = 1032 doff = 32 dsz = 1000
+[USED] name = A7 boff = 1032 bhsz = 32 bsz = 1032 doff = 1064 dsz = 1000
+[USED] name = A8 boff = 2064 bhsz = 32 bsz = 1032 doff = 2096 dsz = 1000
+[FREE] name = NONE boff = 3096 bhsz = 32 bsz = 1000 doff = 3128 dsz = 968
+malloc_summary():
+used  : 3000
+free  : 968
+over  : 128
+u+f+o : 4096
+total : 4096
+mem_check() passed with heap <= 4096
+"""
+rubric = 10
+
+[[tests]]
+name = "08"
+input = ["python3", "runxv6.py", "memtest m 0 10000 A0 p s c 12288"]
+expected = """
+$ memtest m 0 10000 A0 p s c 12288
+[USED] name = A0 boff = 0 bhsz = 32 bsz = 10032 doff = 32 dsz = 10000
+[FREE] name = NONE boff = 10032 bhsz = 32 bsz = 2256 doff = 10064 dsz = 2224
+malloc_summary():
+used  : 10000
+free  : 2224
+over  : 64
+u+f+o : 12288
+total : 12288
+mem_check() passed with heap <= 12288
+"""
+rubric = 10
+
+[[tests]]
+name = "09"
+input = ["python3", "runxv6.py", "memtest m 0 3000 A0 m 1 5000 A1 p s c 8192"]
+expected = """
+$ memtest m 0 3000 a0 m 1 5000 a1 p s c 8192
+[USED] name = a0 boff = 0 bhsz = 32 bsz = 3032 doff = 32 dsz = 3000
+[USED] name = a1 boff = 3032 bhsz = 32 bsz = 5032 doff = 3064 dsz = 5000
+[FREE] name = NONE boff = 8064 bhsz = 32 bsz = 128 doff = 8096 dsz = 96
+malloc_summary():
+used  : 8000
+free  : 96
+over  : 96
+u+f+o : 8192
+total : 8192
+mem_check() passed with heap <= 8192
+"""
+rubric = 10
+
+[[tests]]
+name = "10"
+input = ["python3", "runxv6.py", "memtest m 0 5000 A0 m 1 5000 A1 m 2 5000 A2 m 3 5000 A3 f 2 f 3 p s c 20480"]
+expected = """
+$ memtest m 0 5000 A0 m 1 5000 A1 m 2 5000 A2 m 3 5000 A3 f 2 f 3 p s c 20480
+[USED] name = A0 boff = 0 bhsz = 32 bsz = 5032 doff = 32 dsz = 5000
+[USED] name = A1 boff = 5032 bhsz = 32 bsz = 5032 doff = 5064 dsz = 5000
+[FREE] name = NONE boff = 10064 bhsz = 32 bsz = 10416 doff = 10096 dsz = 10384
+malloc_summary():
+used  : 10000
+free  : 10384
+over  : 96
+u+f+o : 20480
+total : 20480
+mem_check() passed with heap <= 20480
+"""
+rubric = 10
