@@ -73,7 +73,7 @@ u+f+o : 4096
 total : 4096
 mem_check() passed with heap <= 4096
 """
-rubric = 10
+rubric = 6
 
 [[tests]]
 name = "05"
@@ -89,7 +89,7 @@ u+f+o : 4096
 total : 4096
 mem_check() passed with heap <= 4096
 """
-rubric = 9
+rubric = 6
 
 [[tests]]
 name = "06"
@@ -107,7 +107,7 @@ u+f+o : 4096
 total : 4096
 mem_check() passed with heap <= 4096
 """
-rubric = 9
+rubric = 6
 
 [[tests]]
 name = "07"
@@ -126,7 +126,7 @@ u+f+o : 4096
 total : 4096
 mem_check() passed with heap <= 4096
 """
-rubric = 9
+rubric = 6
 
 [[tests]]
 name = "08"
@@ -143,7 +143,7 @@ u+f+o : 12288
 total : 12288
 mem_check() passed with heap <= 12288
 """
-rubric = 9
+rubric = 6
 
 [[tests]]
 name = "09"
@@ -161,7 +161,7 @@ u+f+o : 8192
 total : 8192
 mem_check() passed with heap <= 8192
 """
-rubric = 9
+rubric = 6
 
 [[tests]]
 name = "10"
@@ -179,4 +179,4 @@ u+f+o : 20480
 total : 20480
 mem_check() passed with heap <= 20480
 """
-rubric = 9
+rubric = 6
